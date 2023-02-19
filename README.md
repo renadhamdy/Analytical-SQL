@@ -1,5 +1,23 @@
 # Analytical-SQL
-RFM Analysis 
+RFM Analysis for customer segemntation, to categorize the customers based on resency, frequency and monetary.
+by using analytical SQL functions, the main functions used are window functions and CTE method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -17,7 +35,7 @@ sum(quantity*price) over (partition by customer_id) as sum_cost_for_each_custome
 round(MAX(TO_DATE(invoicedate, 'MM/DD/YYYY HH24:MI')) OVER() - MAX(TO_DATE(invoicedate, 'MM/DD/YYYY HH24:MI')) OVER(PARTITION BY customer_id)) AS Recency
 from tableretail),
 c1 as (
-select DISTINCT customer_id,--
+select DISTINCT customer_id,
    
        ntile(5) over (order by number_of_orders) as rfm_frequency,
         ntile(5) over (order by sum_cost_for_each_customer) as rfm_monetary
