@@ -1,5 +1,16 @@
 # Analytical-SQL
 RFM Analysis 
+
+
+
+
+
+
+
+
+
+
+
 with c as (
 select distinct customer_id, count(*) over (partition by customer_id) as number_of_orders,
 sum(quantity*price) over (partition by customer_id) as sum_cost_for_each_customer,
